@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/reveal.min.css">
         <link rel="stylesheet" href="css/theme/sky.css" id="theme">
         <link rel="stylesheet" href="lib/css/zenburn.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
         <script>
             document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -32,7 +33,7 @@
 
             <div class="slides">
                 <section>
-                    <h2>JavaScript Fundamentals</h2>
+                    <h2>JavaScript Fundamentals (with ES6!)</h2>
                 </section>
                 <section>
                     <section>
@@ -41,11 +42,56 @@
                     <section>
                         <h3>Checklist</h3>
                         <ul>
-                            <li class="fragment">Laptop (or share)</li>
-                            <li class="fragment">Browser open (Chrome or Firefox preferred)</li>
+                            <li class="fragment">Yo Laptop</li>
+                            <li class="fragment">Two options:</li>
+                            <ul class="fragment">
+                              <li class="fragment">NodeJS and Atom/Sublime Text Editor(if you want JavaScript to run and compile code on your computer)</li>
+                              <li class="fragment">Chrome or Firefox (if you want to try out JavaScript syntax first)</li>
+                            </ul>
+                            <p class="fragment">*Side Note: you can go to codePen.io to code too</p>
+                            <p class="fragment">*Side Note 2: Get Atom or Sublime anyway. Make your life much easier</p>
                         </ul>
-                        <p class="fragment">Let's go!</p>
                     </section>
+                </section>
+                <section>
+                  <h1>Before we go</h1>
+                </section>
+                <section>
+                  <h2>1. JavaScript =/= Java</h2>
+                  <p>We have multiple Mikes and Chrises (well Chris Tha God is definitely unique), why can we have multiple Java?</p>
+                </section>
+                <section>
+                  <section>
+                    <h2>2. Useful command for Terminal/Powershell (for those who chose NodeJS path)</h2>
+                  </section>
+                  <section>
+                    <i>ls</i>: this is to see all the file and folder in your current directory
+<pre><code>macintosh-LordDo:~ bdatdo$ ls
+CSSWIT_IS_LIT/  Documents/  nerfdis.js  helloworld.js Mememail_Library/
+</pre></code>
+                  </section>
+                  <section>
+                    <p><i>cd [dir]</i>: this will navigate you to the specified directory.</p>
+<pre><code>macintosh-LordDo:~ bdatdo$cd CSSWIT_IS_LIT/
+macintosh-LordDo:~/CSSWIT_IS_LIT/ bdatdo$
+</pre></code>
+                    <p><b>Protip:</b> you can use <i>tab</i> to autocomplete the directory or file name</p>
+                  </section>
+                  <section>
+                    <i>node [optional_filename]</i>:
+                    <ul>
+                      <li>Without a file, this will open a JavaScript console
+<pre><code>macintosh-LordDo:~ bdatdo$ node
+>
+</pre></code>
+                      </li>
+                      <li>With a file, this will compile and run the specified JavaScript file
+<pre><code>macintosh-LordDo:~ bdatdo$ node helloworld.js
+Hey There Fam
+</pre></code>
+                      </li>
+                    </ul>
+                  </section>
                 </section>
                 <section>
                     <section>
@@ -55,50 +101,60 @@
                         <h3>Variables</h3>
                         <p>A way to store information</p>
                         <p>Declaration</p>
-                        <pre><code>var info;</code></pre>
-                        <p>Instantiation</p>
-                        <pre><code>var info2 = 'JavaScript rules!';</code></pre>
-                        <pre><code>info3 = 'JavaScript rules!';</code></pre>
+<pre><code>// value here can be changed
+let info; </code></pre>
+<pre><code>// value in here can't be changed
+const info2 = 'JavaScript rules!'; </code></pre>
+                        <p>Assign value</p>
+<pre><code>// all good
+info = 'JavaScript rules!'; </code></pre>
+<pre><code> // ERROR due to being constant
+info2 = 'CSS@WIT rules!';</code></pre>
                     </section>
                     <section>
                         <h3>Data Types</h3>
                         <table class="styled-table">
                             <tr>
                                 <td>Strings</td>
-                                <td><code class="javascript">var bananas = "I have some bananas";</code></td>
+                                <td><code class="javascript">const bananas = "I have some bananas";</code></td>
                                 <td>Contained in quotes, quotes must match (single ' or double "). Escape quotes with \</td>
                             </tr>
                             <tr>
                                 <td>Numbers</td>
-                                <td><code class="javascript">var numberOfBananas = 5;</code></td>
+                                <td><code class="javascript">let numberOfBananas = 5;</code></td>
                                 <td>Only ONE number type -- all numbers act like numbers</td>
                             </tr>
                             <tr>
                                 <td>Boolean</td>
-                                <td><code>var haveBananas = true;</code></td>
+                                <td><code>let haveBananas = true;</code></td>
                                 <td><strong>true</strong> or <strong>false</strong>, no quotes!</td>
                             </tr>
                             <tr>
                                 <td>Undefined</td>
-                                <td><code>var strawberries;</code></td>
+                                <td><code>let strawberries;</code></td>
                                 <td>No assigned value</td>
                             </tr>
                             <tr>
                                 <td>Null</td>
-                                <td><code>var pumpkins = null;</code></td>
+                                <td><code>const pumpkins = null;</code></td>
                                 <td>An intentionally empty value (not the same as 0 or undefined)</td>
                             </tr>
                         </table>
                     </section>
                     <section>
                         <h3>Arrays</h3>
-<pre><code class="javascript">var list = [];
-var animals = ['cat','dog','bird'];
-animals[0];
+                        <p>A list of variables</p>
+<pre><code class="javascript">let list = [];
+let animals = ['cat','dog','bird'];
+console.log(animals); // this will print ['cat', 'dog', 'bird']
+console.log(animals[0]); // this will print 'cat'
 animals[0] = 'lemur';
-animals.length;
+console.log(animals[0]); // this will print 'lemur'
+console.log(animals.length); // this will print 3
 animals.push('ferret');
+console.log(animals); // this will print ['cat', 'dog', 'bird', 'ferret']
 animals.pop();
+console.log(animals); // this will print ['cat', 'dog', 'bird']
 </code></pre>
                     </section>
                     <section>
@@ -107,6 +163,7 @@ animals.pop();
                             <li>JavaScript variables are "loosely typed"</li>
                             <li>Names begin with a letter, _, or $</li>
                             <li>Contain letters, numbers, _, and $</li>
+                            <li>*don't use <i>let</i> when you can use <i>const</i></li>
                         </ul>
                     </section>
                 </section>
@@ -121,7 +178,7 @@ function myFunction() {
   alert('hello');
 }
 // Function expression
-var myFunction = function() {
+let myFunction = () => {
   alert('hello');
 }
 // Call it
@@ -129,9 +186,9 @@ myFunction();</code></pre>
                     </section>
                     <section>
                         <h3>Scope</h3>
-<pre><code>var x = 1;
+<pre><code>let x = 1;
 function makeY(number) {
-    var y = number;
+    const y = number;
     return y;
 }
 function changeX() {
@@ -159,14 +216,14 @@ setAlarm("Wake up!", 100);
                     </section>
                     <section>
                         <h3>Self-executing functions</h3>
-<pre><code>(function(){
-  var foo = 'Hello';
-  var bar = 'World!'
-  
+<pre><code>((() => {
+  const foo = 'Hello';
+  const bar = 'World!';
+
   function baz(){
-      return foo + ' ' + bar;
+      return `${foo} ${bar}`; // equivalence to (foo + " " + bar)
   }
-})();
+}))();
 </code></pre>
                     </section>
                 </section>
@@ -220,28 +277,28 @@ setAlarm("Wake up!", 100);
                     </section>
                     <section>
                         <h3>If statements (Conditional)</h3>
-<pre><code contenteditable>if (numberOfStudents > 10) {
-    console.log('Yay, class!');
+<pre><code contenteditable>if (attendance > 10) {
+    console.log('Yo our workshop is lit');
 }</code></pre>
                     </section>
                     <section>
                         <h3>If/else statements</h3>
-<pre><code contenteditable>if (numberOfStudents > 10) {
-    console.log('Yay, class!');
-} else if (numberOfStudents > 0) {
-    console.log('... someone came!');
+<pre><code contenteditable>if (attendance > 20) {
+    console.log('Yo our workshop is lit');
+} else if (attendance > 0) {
+    console.log('... someone came');
 } else {
     console.log(':(');
 }</code></pre>
-                    </section>                  
+                    </section>
                     <section>
                         <h3>For loops</h3>
 <pre><code contenteditable="" class="javascript">for (initialize; condition; update) {
     // do something
-}</code></pre>  
-<pre><code contenteditable="" class="javascript">for (var i = 0; i < 5; i++) {
+}</code></pre>
+<pre><code contenteditable="" class="javascript">for (let i = 0; i < 5; i++) {
     console.log(i);
-}</code></pre>                  
+}</code></pre>
                     </section>
                 </section>
                 <section>
@@ -250,39 +307,46 @@ setAlarm("Wake up!", 100);
                     </section>
                     <section>
                         <h3>Object literal</h3>
-<pre><code class="javascript">var myObject = {
+<pre><code class="javascript">const myObject = {
     myProperty: 'value pair',
-    myMethod: function(){
+    myMethod() {
         console.log(this);
         return this;
     }
-}</code></pre>
+};</code></pre>
                     </section>
                     <section>
                         <h3>Access parts of objects</h3>
-<pre><code class="javascript">var cat = {
+<pre><code class="javascript">const cat = {
     name: 'Luna',
     domicile: 'Philadelphia'
 };
-console.log(cat.name);
-console.log(cat['name']);
+console.log(cat.name); // print Luna
+console.log(cat['name']); // also print Luna
 </code></pre>
                     </section>
                     <section>
-                        <h3>Grow objects as you please</h3>
-<pre><code class="javascript">var myObject = {};
+                        <h3>Grow objects as you please (only if you use <i>let</i>)</h3>
+<pre><code class="javascript">let myObject = {};
 myObject.something = 'hello';</code></pre>
                     </section>
                     <section>
-                        <h3>Object.prototype</h3>
-                        <p>"Allows the addition of properties to all objects of type Object."</p>
-<pre><code class="javascript">function Animal(name, sound) {
-    this.name = name || 'No name',
-    this.sound = sound || 'silent'
+                        <h3>Class</h3>
+                        <p>Create a template for objects to follow (I honestly don't know how to explain better)</p>
+<pre><code class="javascript">class Animal {
+    constructor(type='Unspecified', sound='silent') {
+        this.type = type,
+        this.sound = sound
+    }
+
+    setName(newName) {
+        this.name = newName
+    }
 }
-Animal.prototype.setName = function(newName) {
-    this.name = newName
-}
+let leopard = new Animal('cat', 'grr');
+console.log(leopard.type); // print 'cat'
+console.log(leopard.sound); // print 'grr'
+
 </code></pre>
                     </section>
                     <section>
@@ -303,25 +367,64 @@ document.URL
                     </section>
                     <section>
                         <h3>Example usage</h3>
-<pre><code class="javascript">var item = document.getElementById('myitem');
+<pre><code class="javascript">const item = document.getElementById('myitem');
 item.style.color = 'red';
 </code></pre>
                     <p>Use an HTML document to play around!</p>
                     </section>
                 </section>
                 <section>
+                  <section>
+                    <h2>Extra: ES6 vs its predecessor (ES5)</h2>
+                    <p class="fragment">For those who have seen JavaScript code before</p>
+                  </section>
+                  <section>
+                    <h3>This is Equivalence</h3>
+                    <div>
+                      <div>
+                        <h4>ES5</h4>
+<pre><code class="javascript">var name = "Jackson Schwarz";
+var x;
+//saying hello
+console.log("Hello " + name);
+[1, 2, 3].map(function(n) { return n * 2; }, this);
+// -> [ 2, 4, 6 ]
+</code></pre>
+                      </div>
+                      <div>
+                        <h4>ES6 (Cooler)</h4>
+<pre><code class="javascript">const name = "Jackson Schwarz";
+let x;
+//saying hello
+console.log(`Hello ${name}`);
+[1, 2, 3].map(n => n * 2, this);
+// -> [ 2, 4, 6 ]
+</code></pre>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <h3>Why ES6?</h3>
+                    <ul class="fragment">
+                      <li class="fragment">Cleaner and much more convinient</li>
+                      <li class="fragment">(#Advanced)Closer to Object-oriented Programming, which means it will look similar to Java and C++</li>
+                    </ul>
+                  </section>
+                </section>
+                <section>
                     <section>
-                        <h1>End of class</h1>
+                        <h1>End of workshop</h1>
                     </section>
                     <section>
                         <h1>... but not learning!</h1>
                     </section>
                     <section>
-                        <h3>Upcoming Events</h3>
+                        <h3>More Resources:</h3>
                         <ul>
-                            <li>8/29 - Project Night, see meetup.com</li>
-                            <li>9/21 - Apps for Philly Transit Hackathon</li>
-                            <li>9/24 - September Meetup, Angular - with special guest! Thanks Haydle!</li>
+                            <li><a href="https://github.com/lukehoban/es6features#readme">ES6 Overview</a></li>
+                            <li><a href="https://www.lynda.com/search?q=javascript+es+6">Lynda Javascript courses</a> (We have free access to Lynda.com)</li>
+                            <li><a href="https://www.youtube.com/results?search_query=javascript+tutorial">Youtube!!</a></li>
+                            <li><a href="https://wentworthcss.slack.com/signup"> Slack #resources and #javascript </a> (We have a lot of JS experts up there)</li>
                         </ul>
                     </section>
             </div>
