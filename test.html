@@ -1,11 +1,31 @@
 <html>
 <head>
   <title>CSS@WIT JavaScript Workshop</title>
+  <script type="text/javascript">
+    window.onload = function(){
+      const mainForm document.getElementById("loginForm");
+
+      mainForm.onsubmit = (e) => {
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+
+        alert(`name=${name.value} and email=${email.value}`);
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>Hello World</h1>
   <h2>This is foobar website</h2>
   <img src="http://www.nyan.cat/cats/original.gif">
+  <form method="get" action="" id="loginForm">
+      <h3>Login</h3>
+      Name: <input type="text" id="name" name="name"><br><br>
+      E-mail: <input type="text" id="email" name="email"><br><br>
+      <div>
+        <input type="submit"><input type="reset">
+      </div>
+  </form>
   <p>lorem ipsum blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla</p>
 </body>
 </html>
